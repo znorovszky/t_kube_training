@@ -1,0 +1,27 @@
+# pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: flask-test
+  name: flask-test
+spec:
+  containers:
+  - image: znorovszky/flask-test:0.1
+    name: flask-test
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+---
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: flask-test
+  type: ClusterIP
