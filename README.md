@@ -19,23 +19,40 @@
     - kubectl run debian --image=debian --command -- sleep infinity
     - debian-pod.yaml
 - Podok
-- Namespace-ek
-- Deployment/Daemonset/Replicaset/Statefulset
+- Podok és konténerek viszonya, initContainer/sidecar container
 
 ## Day 3
-- configmap, secret
-- persistence, PV, PVC
 - labels, annotations
+- Deployment/replicaset és társaik
+- Recreate, Rolling update, etc.
 
 ## Day 4
-- Hálózatok
-- Service
-- Ingress
+- Configmaps/Secrets
+- Env. vars.
 
 ## Day 5
+- Resources, requests, limits
+- Scheduler
+- Security context
+
 ## Day 6
+- Hálózatok
+- Service
+
 ## Day 7
+- Ingress
+- APIGateway
+- Network policy
+
 ## Day 8
+- Perzistencia
+- PV/PVC
+
 ## Day 9
+- Liveness
+- Readiness
+- Startup Probes.
+- Logging and Monitoring.
+
 ## Day 10
 - Helm
