@@ -12,7 +12,6 @@
 - Killercoda
 - Kubernetes, főbb komponensek
 - Cluster access, .kube/config
-- Kis demó
     
 ## Day 2
 - Imperative/declarative
