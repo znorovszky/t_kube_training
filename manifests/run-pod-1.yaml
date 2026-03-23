@@ -25,3 +25,5 @@ spec:
   selector:
     app: flask-test
   type: ClusterIP
+
+  # kubectl port-forward service/flask-svc --address=0.0.0.0 80:80  

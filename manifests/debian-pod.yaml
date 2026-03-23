@@ -1,0 +1,17 @@
+# k run debian --image=debian --command -- sleep infinity
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: debian
+  name: debian
+spec:
+  containers:
+  - command:
+    - sleep
+    - infinity
+    image: debian
+    name: debian
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
