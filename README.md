@@ -21,11 +21,11 @@
 - Podok és konténerek viszonya, initContainer/sidecar container
 
 ## Day 3
-- labels, annotations
 - Deployment/replicaset és társaik
 - Recreate, Rolling update, etc.
 
 ## Day 4
+- labels, annotations
 - Configmaps/Secrets
 - Env. vars.
 
@@ -33,6 +33,7 @@
 - Resources, requests, limits
 - Scheduler
 - Security context
+- RBAC, service accounts
 
 ## Day 6
 - Hálózatok
