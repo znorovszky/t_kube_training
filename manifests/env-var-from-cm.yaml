@@ -1,0 +1,56 @@
+# Hogyan szúrjunk be környezeti változót CM-ből?
+# pod.yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: flask-test
+  name: flask-test
+spec:
+  containers:
+  - image: znorovszky/flask-test:0.1
+    name: flask-test
+    imagePullPolicy: Always
+    # Futó konténernek átadott környezeti változók
+    env:
+    - name: ENV_VAR
+      valueFrom:
+        configMapKeyRef:
+          # CM neve
+          name: env-var
+          # CM kulcs
+          key: env-var    
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+# configmap.yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-var
+data:
+  # Kulcs: érték
+  env-var: "Változó"
+
+# Service, hogy lássuk, mi műveltünk :P
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: flask-test
+  name: flask-svc
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: flask-test
+  type: ClusterIP
+
+# Futtassuk meg másik terminálban, hogy elérjük a service-ünket
+# kubectl port-forward service/flask-svc --address=0.0.0.0 80:80  
