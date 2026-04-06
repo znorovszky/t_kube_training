@@ -1,0 +1,60 @@
+# Nginx pod
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx
+    app: nginx-test
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+    volumeMounts:
+    - name: mount-this
+      mountPath: /usr/share/nginx/html/index.html
+      subPath: index.html
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: mount-this
+    configMap:
+      name: file-content
+      items:
+      - key: file-tartalom
+        path: index.html
+      
+# Fájl tartalom a configmap-ben
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: file-content
+data:
+  file-tartalom: |
+    <html>
+    <title>Kubernetes training</title>
+    <body>Ez configmap-ből jön</body>
+    </html>
+
+# Service az Nginx pod-hoz
+# service.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-svc
+  name: nginx-svc
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    # A selector a pod valamely, egyértelmű label-jére kell mutasson
+    app: nginx-test
+  type: ClusterIP
+
+# kubectl port-forward service/nginx-svc --address=0.0.0.0 8080:80 
