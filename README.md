@@ -33,11 +33,11 @@
 - Resources, requests, limits
 - Scheduler
 - Security context
-- RBAC, service accounts
 
 ## Day 6
 - Hálózatok
 - Service
+- RBAC, service accounts
 
 ## Day 7
 - Ingress
