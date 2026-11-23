@@ -1,4 +1,4 @@
-# Kubernetes training material 2026 H1
+# Kubernetes training material 2026 Q4
 
 ## Day 1
 - Bemutatkozás
@@ -45,7 +45,7 @@
 - Network policy
 
 ## Day 8
-- Perzistencia
+- Perzisztencia
 - PV/PVC
 
 ## Day 9
